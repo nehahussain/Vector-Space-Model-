@@ -135,9 +135,9 @@ def calculateranking(query):
     for y in weightlist:
         if y[1]<alpha:
             break
-        t=(y[0],y[1])
-        templist.append(t)
-        # templist.append(y[0])
+        # t=(y[0],y[1])
+        # templist.append(t)
+        templist.append(y[0])
     return templist
         
         
