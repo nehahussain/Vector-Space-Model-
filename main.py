@@ -86,15 +86,20 @@ def VSMofDoc():
 VSMofDoc()
 
 def calculateranking(query):
+    qq=re.compile('\W+')
     weightlist=[]
-    query=query.split()
+    query=qq.split(query.casefold())
     parsedquery=[]
     queryvector=[]
     for i in query:
         if i in stoplist:
             continue
-        parsedquery.append(lemmatizing.lemmatize(i.casefold()))
-     
+        i=lemmatizing.lemmatize(i.casefold())
+        if i in lstofword:
+            parsedquery.append(i)
+        else:
+            continue 
+        
     for jj in range(len(lstofword)):    # initilizing the vector with zero 
         queryvector.append(0.0)  
              
