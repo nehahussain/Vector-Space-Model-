@@ -3,6 +3,7 @@ import re
 from nltk.stem import WordNetLemmatizer
 import time
 import numpy as np
+import ast
 
 lemmatizing=WordNetLemmatizer ()
 
@@ -41,13 +42,15 @@ def listofwords():
         filelist.append(name)
         fname=""
     
-    tempdict={}
     wordfile=open("invertedindex.txt","w")
-    for key in sorted(dict.keys()):
-        wordfile.write(str(key)+" "+str(dict[key])+'\n')
-        tempdict[key]=dict[key]
-    wordfile.close()   
-    return tempdict
+    wordfile.write(str(dict))
+    wordfile.close()
 
-if __name__ == "__main__":
-    listofwords()
+listofwords()
+
+def returndict():
+    f=open("invertedindex.txt","r")
+    r=f.read()
+    dc=ast.literal_eval(r)
+    f.close()
+    return dc

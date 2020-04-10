@@ -117,6 +117,8 @@ def calculateranking(query):
         idf=( math.log( 56/dflist[ii] ,10) )
         queryvector[ii]=queryvector[ii]*idf
         
+    for x in parsedquery:
+        print(queryvector[lstofword.index(x)])
         
     for key,docvector in dict.items():
         numerator=np.dot(queryvector,docvector)
